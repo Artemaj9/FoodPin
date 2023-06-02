@@ -13,25 +13,11 @@ struct RestaurantListView: View {
     var restaurantLocations = ["Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong","Sydney", "Sydney", "Sydney","New York", "New York", "New York", "New York", "New York", "New York", "New York", "London", "London", "London", "London"]
     var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian/ Causual Drink", "French", "Bakery", "Bakery","Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee &Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
     
+    
     var body: some View {
         List {
             ForEach(restaurantNames.indices, id: \.self) { index in
-                VStack(alignment: .leading, spacing: 10.0) {
-                    Image(restaurantImages[index])
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: 200)
-                        .cornerRadius(20)
-                    VStack(alignment: .leading) {
-                        Text(restaurantNames[index])
-                            .font(.system(.title2,design: .rounded))
-                        Text(restaurantLocations[index])
-                            .font(.system(.body,design: .rounded))
-                        Text(restaurantTypes[index])
-                            .font(.system(.body,design: .rounded))
-                            .foregroundColor(.gray)
-                    }
-                }
+                FullImageRow(imageName: restaurantImages[index], name: restaurantNames[index], type: restaurantTypes[index], location: restaurantLocations[index])
             }
             .listRowSeparator(.hidden)
         }
@@ -46,5 +32,30 @@ struct RestaurantListView_Previews: PreviewProvider {
         RestaurantListView()
             .preferredColorScheme(.dark)
             .previewDisplayName("Restaurant List View (Dark)")
+    }
+}
+
+struct FullImageRow: View {
+    var imageName: String
+    var name : String
+    var type : String
+    var location: String
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10.0) {
+            Image(imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 200)
+                .cornerRadius(20)
+            VStack(alignment: .leading) {
+                Text(name)
+                    .font(.system(.title2,design: .rounded))
+                Text(type)
+                    .font(.system(.body,design: .rounded))
+                Text(location)
+                    .font(.system(.body,design: .rounded))
+                    .foregroundColor(.gray)
+            }
+        }
     }
 }
