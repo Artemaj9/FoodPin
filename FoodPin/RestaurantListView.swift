@@ -81,7 +81,7 @@ struct FullImageRow: View {
                     self.showEror.toggle()
                 }
             
-                Button("Mark as favorite 2") {
+            Button(isFavorite ? "Delete from favorites" : "Mark as favorite 2") {
                     self.isFavorite.toggle()
                 }
                 Button("Are you Daldon?") {
