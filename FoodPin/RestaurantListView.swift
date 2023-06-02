@@ -36,6 +36,7 @@ struct RestaurantListView_Previews: PreviewProvider {
 }
 
 struct FullImageRow: View {
+    @State private var  showOptions = false
     var imageName: String
     var name : String
     var type : String
@@ -56,6 +57,22 @@ struct FullImageRow: View {
                     .font(.system(.body,design: .rounded))
                     .foregroundColor(.gray)
             }
+        }
+        .onTapGesture {
+            showOptions.toggle()
+        }
+        .confirmationDialog("What do you want to do?", isPresented: $showOptions, titleVisibility: .visible) {
+                Button("Reserve a table") {
+                }
+                
+                Button("Mark as favorite") {
+                }
+            
+                Button("Mark as favorite 2") {
+                }
+                Button("You are Daldon!") {
+                }
+               
         }
     }
 }
