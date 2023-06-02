@@ -59,7 +59,7 @@ struct RestaurantListView: View {
                         }
                         .tint(.orange)
                     })
-                    .swipeActions(edge: .trailing, allowsFullSwipe: false, content : {
+                    /*.swipeActions(edge: .trailing, allowsFullSwipe: false, content : {
                         Button {
                             
                         } label: {
@@ -67,7 +67,7 @@ struct RestaurantListView: View {
                                 .foregroundColor(.yellow)
                         }
                         .tint(.blue)
-                    })
+                    }) */
             }
            .onDelete(perform: { indexSet in
                 restaurants.remove(atOffsets: indexSet)
@@ -93,6 +93,7 @@ struct FullImageRow: View {
     @State private var showEror = false
     @State private var showEror2 = false
     @State private var show3 = false
+    @State private var show4 = false
     /* var imageName: String
      var name : String
      var type : String
@@ -124,6 +125,14 @@ struct FullImageRow: View {
                         HStack{
                             Text("Call us, Daldonus!")
                             Image(systemName: "phone")
+                        }
+                    }
+                    Button (action: {
+                        self.show4.toggle()
+                    }) {
+                        HStack{
+                            Text("Share")
+                            Image(systemName: "square.and.arrow.up")
                         }
                     }
                 }
@@ -181,7 +190,7 @@ struct FullImageRow: View {
                 }
                 
             }
-            .alert(restaurant.isFavorite && restaurant.isSuper ? "Welcome!": "Not available for Daldons!", isPresented: $showEror) {
+          .alert(restaurant.isFavorite && restaurant.isSuper ? "Welcome!": "Not available for Daldons!", isPresented: $showEror) {
                 Button("OK") {}
             } message: {
                 Text(restaurant.isFavorite && restaurant.isSuper ? "You are not a Daldon! Congratulations!" : "Sorry, but you are great Daldoon! Please retry later.")
@@ -190,6 +199,15 @@ struct FullImageRow: View {
                 Button("OK") {}
             } message: {
                 Text( show3 ? "You are great person!" : "You definetly 100% Daldonierius!")
+            }
+            .sheet(isPresented: $show4) {
+                let defaultText = "Just checking in at \(restaurant.name)"
+                
+                if let imageToShare = UIImage(named: restaurant.image) {
+                    ActivityView(activityItems: [defaultText, imageToShare])
+                } else {
+                    ActivityView(activityItems: [defaultText])
+                }
             }
         }
     }
