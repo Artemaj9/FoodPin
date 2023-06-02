@@ -16,10 +16,11 @@ struct RestaurantListView: View {
     var body: some View {
         List {
             ForEach(restaurantNames.indices, id: \.self) { index in
-                HStack(alignment: .top, spacing: 20) {
+                VStack(alignment: .leading, spacing: 10.0) {
                     Image(restaurantImages[index])
                         .resizable()
-                        .frame(width: 120, height: 118)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 200)
                         .cornerRadius(20)
                     VStack(alignment: .leading) {
                         Text(restaurantNames[index])
