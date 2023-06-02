@@ -53,11 +53,11 @@
 		ACA2A3512A2A0E0F00A7DDBD /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				ACA2A3632A2A4E2100A7DDBD /* Model */,
+				ACA2A3622A2A4E0400A7DDBD /* View */,
 				ACA2A3522A2A0E0F00A7DDBD /* FoodPinApp.swift */,
-				ACA2A3542A2A0E0F00A7DDBD /* RestaurantListView.swift */,
 				ACA2A3562A2A0E1000A7DDBD /* Assets.xcassets */,
 				ACA2A3582A2A0E1000A7DDBD /* Preview Content */,
-				ACA2A3602A2A3F3500A7DDBD /* Restaurant.swift */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -68,6 +68,22 @@
 				ACA2A3592A2A0E1000A7DDBD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ACA2A3622A2A4E0400A7DDBD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACA2A3542A2A0E0F00A7DDBD /* RestaurantListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ACA2A3632A2A4E2100A7DDBD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACA2A3602A2A3F3500A7DDBD /* Restaurant.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
